@@ -3,11 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>VueApp</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        Vreemd
+    <div id="app" class='container'>
+        <div class="parent text-light bg-dark">
+            
+            <div class="header">
+             <h3 class="pl-2"><div class="material-icons h-4">event_note</div> App Logo</h3>
+            </div>
+            <nav class="nav navbar navbar-expand-sm">
+                <ul class="nav">
+                    <li class="nav-item"><a href="#" class="btn btn-primary">Add Todo</a></li>
+                    <li class="nav-item"><a href="" class="nav-link">Usage</a></li>
+                    <!-- <li><a href="" ></a></li> -->
+                </ul>
+            </nav>
+        </div>
+    </div>
+    
+    <div class="container item-container">
+            <div class="btn-group ">
+                <a href="#" title="remove all"><span class="material-icons">delete_outline</span></a> 
+                <!-- <span class="material-icons">remove_shopping_cart</span> -->
+                <div class="bg-secondary text-light rounded pl-2 pr-2">Items <span class="badge badge-pill bg-primary text-light">4</span></div> 
+            </div>
+            <hr>
+            <ul class="list-group-flush todo-list">
+                {% for todo in todos%}
+                 <li class="list-group-item list-group-item-action"></li>
+                 <span class="mr-2"><input type="checkbox" name="fin"></span>
+                    <span class="subject">{{todo.text}}</span>
+                    <span class="btn-group">
+                        <i class="material-icons"> edit</i>|<i class="material-icons"> delete</i>
+                    </span>
+                </li>
+                {%endfor%}
+            </ul>
     </div>
 </body>
+<style scoped>
+    .parent{
+        display: flex;
+        place-items:center;
+       gap: .5rem;
+    }
+    .header{
+         flex:1;
+         flex-flow: wrap;
+         justify-content: stretch;height: 40px;line-height:40px;
+    }
+    .header .h-4{
+        width: 32px;
+        height: 32px;
+        font-size: 32px;
+        
+    }
+    .todo-list > li{
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .todo-list .subject{
+        flex:50%;
+        flex-grow: initial;
+    }
+    .item-container{
+        flex-wrap:wrap ;
+    }
+</style>
 </html>
